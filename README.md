@@ -1,92 +1,61 @@
-# 🚀 create-rvst
+# 📚 Library Notification System
 
-A modern CLI tool to scaffold a new **RVST-Stack** project using **Vite**, **React**, **Shadcn UI**, and **Tailwind CSS**.
+A full-stack playground for testing transactional email notifications. This project consists of a **Node.js/Express backend** that sends HTML emails using `0utmailcore` and a **React frontend** dashboard to trigger them.
 
-## 🌟 Features
+## 🚀 Features
 
-- ⚡ **Vite** - Lightning-fast build tool and dev server
-- ⚛️ **React** - Popular UI library for building user interfaces
-- 🎨 **Shadcn UI** - High-quality, accessible component system
-- 🌊 **Tailwind CSS** - Utility-first CSS framework
-- 🔥 **Hot Module Replacement (HMR)** - Instant feedback during development
-- 🧪 **ESLint** - Code linting for best practices
-
----
-
-## 📚 Installation
-
-To create a new **RVST-Stack** project, run:
-
-```sh
-npx create-rvst my-app
-```
-
-or using **npm**:
-
-```sh
-npm create rvst my-app
-```
-
-Then navigate to your project and start the development server:
-
-```sh
-cd my-app
-npm run dev
-```
-
-Open your browser and go to **[http://localhost:5173](http://localhost:5173)**.
-
----
-
-## 📁 Project Structure
-
-```
-my-app/
-├── src/
-│   ├── App.jsx
-│   ├── components/
-│   ├── styles/
-│   │   └── main.css
-│   └── index.css
-├── public/
-├── package.json
-├── vite.config.js
-├── README.md
-└── .eslintrc.json
-```
-
----
+*   **3 Email Templates:** New Arrival, Return Reminder, and Event Invitation.
+*   **HTML Email Builder:** Generates responsive, professional email layouts.
+*   **React Playground:** A dashboard to input data, auto-fill test data, and view server logs in real-time.
+*   **Live API Logging:** View request payloads and server status codes directly in the UI.
 
 ## 🛠️ Tech Stack
 
-| Technology  | Description |
-|-------------|------------|
-| [React](https://react.dev/) | JavaScript library for UI development |
-| [Vite](https://vitejs.dev/) | Fast build tool and dev server |
-| [Shadcn UI](https://ui.shadcn.com/) | Pre-styled accessible UI components |
-| [Tailwind CSS](https://tailwindcss.com/) | Utility-first CSS framework |
-| [ESLint](https://eslint.org/) | Code linting and formatting |
+*   **Frontend:** React, Vite, Tailwind CSS, Lucide Icons.
+*   **Backend:** Node.js, Express, 0utmailcore (Gmail API wrapper).
 
 ---
 
-## 🔌 Vite Plugins Used
+## 📦 Setup & Installation
 
-| Plugin | Description |
-|--------|------------|
-| `@vitejs/plugin-react` | Uses Babel for Fast Refresh |
-| `@vitejs/plugin-react-swc` | Uses SWC for Fast Refresh |
+### 1. Backend (Server)
+
+1.  Navigate to the server directory.
+2.  Install dependencies:
+    ```bash
+    npm install express cors 0utmailcore
+    ```
+3.  Start the API server:
+    ```bash
+    node index.js
+    ```
+    *Server will run at `http://localhost:3000`*
+
+### 2. Frontend (Client)
+
+1.  Navigate to the client directory (where your Vite app is).
+2.  Install dependencies:
+    ```bash
+    npm install lucide-react
+    ```
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+    *Open the link provided (usually `http://localhost:5173`) to view the playground.*
 
 ---
 
-## 🤝 Contributing
+## 🔌 API Endpoints
 
-Contributions, issues, and feature requests are welcome!  
-Feel free to **fork** this repo and submit a PR. 🚀
+The frontend communicates with the backend via these POST routes:
 
----
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/notify/new-book` | Alerts patrons about a new book arrival. |
+| `POST` | `/api/notify/return` | Sends a due date reminder. |
+| `POST` | `/api/notify/event` | Invites patrons to a library event. |
 
-## 📝 License
+## ⚠️ Important Note
 
-This project is licensed under the **MIT License**.  
-See [LICENSE](LICENSE) for more details.
-
+The `index.js` file currently contains hardcoded API keys and Tokens. In a production environment, ensure these are moved to a `.env` file and never committed to public repositories or use private repos.
